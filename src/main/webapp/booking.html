@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Details</title>
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+
+<section class="booking-page">
+
+    <div class="booking-hero">
+        <h1>Booking Details</h1>
+        <img id="heroCar" src="">
+    </div>
+
+    <div class="booking-layout">
+
+    <div class="left-area">
+
+        <div class="booking-card">
+            <h2>☑ Car Details</h2>
+
+            <div class="customer-line">
+                <div>
+                    <p><strong>Category:</strong> Compact / Economy</p>
+                    <h3 id="carName">Volkswagen Golf</h3>
+                    <p id="carDesc" class="car-desc">
+                        Practical, comfortable and fuel-efficient hatchback for city and long-distance driving.
+                    </p>
+                </div>
+
+                <img id="smallCar" src="">
+            </div>
+
+            <div class="date-row">
+                <span>Engine</span>
+                <strong id="engineInfo">1.5 TSI Petrol</strong>
+                <strong id="gearInfo">Automatic</strong>
+            </div>
+
+            <div class="date-row">
+                <span>Capacity</span>
+                <strong id="seatInfo">5 Seats</strong>
+                <strong id="fuelInfo">Petrol</strong>
+            </div>
+
+            <div class="status-row">
+                <span>Status:</span>
+                <strong id="availableInfo">Available</strong>
+                <button>✓ Rentable</button>
+            </div>
+        </div>
+
+        <div class="current-card">
+            <h2>Vehicle Features</h2>
+
+            <div class="feature-grid">
+                <div>
+                    <strong>Transmission</strong>
+                    <span id="featureGear">Automatic</span>
+                </div>
+
+                <div>
+                    <strong>Fuel Type</strong>
+                    <span id="featureFuel">Petrol</span>
+                </div>
+
+                <div>
+                    <strong>Seats</strong>
+                    <span id="featureSeats">5 Seats</span>
+                </div>
+
+                <div>
+                    <strong>Usage</strong>
+                    <span>City / Long Trip</span>
+                </div>
+            </div>
+
+            <img class="road-car" src="image/golf-3.jpg">
+        </div>
+
+    </div>
+
+    <div class="right-area">
+
+        <div class="summary-card">
+            <h3>Rental Summary</h3>
+
+            <div class="select-area">
+                <label>Pick-Up Date</label>
+                <input id="pickDate" type="date">
+            </div>
+
+            <div class="select-area">
+                <label>Return Date</label>
+                <input id="returnDate" type="date">
+            </div>
+
+            <div class="summary-line">
+                <span>Rental Days:</span>
+                <strong id="rentalDays">0</strong>
+            </div>
+
+            <div class="summary-line">
+                <span>Daily Rate:</span>
+                <strong id="dailyRate">€55</strong>
+            </div>
+
+            <div class="summary-line total">
+                <span>Total Cost:</span>
+                <strong id="totalCost">€0</strong>
+            </div>
+            <div class="info-text">
+    * A valid ID and driver’s license are required at pickup.<br>
+    * A refundable security deposit may be charged.<br>
+    * Late returns may result in additional fees.<br>
+    * Free cancellation is available up to 24 hours before pickup.
+</div>
+            <button class="rent-btn" id="rentNowBtn">Rent Now</button>
+        </div>
+
+    </div>
+
+    <div class="payment-card full-width">
+        <h3>Ready to Rent?</h3>
+
+        <div class="payment-row">
+            <span>☑ Insurance included</span>
+            <button>Included</button>
+        </div>
+
+        <div class="payment-row">
+            <span>☑ Free cancellation</span>
+            <button>Free</button>
+        </div>
+
+       <div class="payment-row">
+    <span>☑ No hidden fees</span>
+</div>
+    </div>
+
+</div>
+
+</section>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const car = params.get("car") || "Volkswagen Golf";
+
+    document.getElementById("carName").innerText = car;
+
+    const carData = {
+    "Volkswagen Golf": {
+        hero: "image/wolkswagen-golf-removebg-preview.png",
+        middle: "image/wolkswagen-golf.png",
+        road: "image/golf-3.jpg",
+        desc: "The Volkswagen Golf is a compact hatchback with balanced performance, modern comfort and excellent fuel efficiency. It is suitable for both city driving and long-distance trips.",
+        engine: "1.5 TSI Petrol",
+        gear: "Automatic",
+        seats: "5 Seats",
+        fuel: "Petrol",
+        daily: 55,
+        monthly: 1450
+    },
+
+    "Mercedes EQA": {
+        hero: "image/eqa-3.png",
+        middle: "image/car.png",
+        road: "image/eqa-2.png",
+        desc: "The Mercedes EQA is a premium electric SUV with quiet driving, modern technology and high comfort. It is ideal for customers who want an eco-friendly luxury rental experience.",
+        engine: "Electric Motor",
+        gear: "Automatic",
+        seats: "5 Seats",
+        fuel: "Electric",
+        daily: 95,
+        monthly: 2600
+    },
+
+    "BMW 3": {
+        hero: "image/bmw-3-3.png",
+        middle: "image/bmw-3-series.png",
+        road: "image/bmw-2.png",
+        desc: "The BMW 3 Series offers a sporty sedan experience with strong performance, premium interior quality and excellent road handling.",
+        engine: "2.0 Petrol",
+        gear: "Automatic",
+        seats: "5 Seats",
+        fuel: "Petrol",
+        daily: 95,
+        monthly: 2550
+    },
+
+    "Audi A4": {
+        hero: "image/audi-a4-3.png",
+        middle: "image/audi-a4-3.png",
+        road: "image/audi-2.png",
+        desc: "The Audi A4 is a premium sedan with a comfortable interior, elegant design and smooth driving performance. It is suitable for business and daily use.",
+        engine: "2.0 TFSI",
+        gear: "Automatic",
+        seats: "5 Seats",
+        fuel: "Petrol",
+        daily: 110,
+        monthly: 2900
+    },
+
+    "Toyota Corolla": {
+        hero: "image/toyota-3.png",
+        middle: "image/toyota-2.png",
+        road: "image/toyota-4.png",
+        desc: "The Toyota Corolla is a reliable and economical sedan with low fuel consumption, comfortable seating and strong daily usability.",
+        engine: "1.6 Hybrid",
+        gear: "Automatic",
+        seats: "5 Seats",
+        fuel: "Hybrid",
+        daily: 70,
+        monthly: 1850
+    },
+
+    "Renault Clio": {
+        hero: "image/renault-3.png",
+        middle: "image/renault-3.png",
+        road: "image/reno-2.png",
+        desc: "The Renault Clio is a compact city car with easy parking, low fuel consumption and practical interior space. It is a good choice for short urban rentals.",
+        engine: "1.0 Petrol",
+        gear: "Manual",
+        seats: "5 Seats",
+        fuel: "Petrol",
+        daily: 60,
+        monthly: 1600
+    }
+};
+
+    const selectedCar = carData[car] || carData["Volkswagen Golf"];
+
+    document.getElementById("heroCar").src = selectedCar.hero;
+    document.getElementById("smallCar").src = selectedCar.middle;
+    document.querySelector(".road-car").src = selectedCar.road;
+
+    document.getElementById("carDesc").innerText = selectedCar.desc;
+document.getElementById("engineInfo").innerText = selectedCar.engine;
+document.getElementById("gearInfo").innerText = selectedCar.gear;
+document.getElementById("seatInfo").innerText = selectedCar.seats;
+document.getElementById("fuelInfo").innerText = selectedCar.fuel;
+
+document.getElementById("dailyRate").innerText = "€" + selectedCar.daily;
+
+document.getElementById("featureGear").innerText = selectedCar.gear;
+document.getElementById("featureFuel").innerText = selectedCar.fuel;
+document.getElementById("featureSeats").innerText = selectedCar.seats;
+
+const pickDate = document.getElementById("pickDate");
+const returnDate = document.getElementById("returnDate");
+const rentalDays = document.getElementById("rentalDays");
+const totalCost = document.getElementById("totalCost");
+
+function calculateByDate() {
+    if (!pickDate.value || !returnDate.value) {
+        rentalDays.innerText = "0";
+        totalCost.innerText = "€0";
+        return;
+    }
+
+    const start = new Date(pickDate.value);
+    const end = new Date(returnDate.value);
+
+    const diffTime = end - start;
+    const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (days <= 0) {
+        rentalDays.innerText = "Invalid";
+        totalCost.innerText = "€0";
+        return;
+    }
+
+    rentalDays.innerText = days;
+    totalCost.innerText = "€" + (days * selectedCar.daily);
+}
+
+pickDate.addEventListener("change", calculateByDate);
+returnDate.addEventListener("change", calculateByDate);
+
+document.getElementById("rentNowBtn").addEventListener("click", function () {
+    if (!pickDate.value || !returnDate.value) {
+        alert("Please select both pick-up and return dates.");
+        return;
+    }
+
+    const start = new Date(pickDate.value);
+    const end = new Date(returnDate.value);
+
+    const diffTime = end - start;
+    const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (days <= 0) {
+        alert("Please select a valid rental period.");
+        return;
+    }
+
+    window.location.href =
+        "rental.html?car=" + encodeURIComponent(car) +
+        "&pick=" + encodeURIComponent(pickDate.value) +
+        "&return=" + encodeURIComponent(returnDate.value) +
+        "&days=" + encodeURIComponent(days);
+});
+    // 🔧 her araba için pozisyon
+const heroStyle = {
+    "Volkswagen Golf": { top: "-20px", scale: "1.05", right: "35px" },
+    "Mercedes EQA":   { top: "25px",  scale: "1.1",  right: "35px" },
+    "BMW 3":          { top: "10px",  scale: "1.08", right: "30px" },
+    "Audi A4":        { top: "40px",   scale: "1.15", right: "35px" },
+    "Toyota Corolla": { top: "0px",   scale: "1.50", right: "35px" },
+    "Renault Clio":   { top: "-10px",  scale: "1.06", right: "35px" }
+};
+
+// 🎯 hero araba
+const hero = document.getElementById("heroCar");
+
+// seçilen arabaya göre ayar
+const style = heroStyle[car] || { top: "0px", scale: "1", right: "35px" };
+
+// uygula
+hero.style.position = "absolute";
+hero.style.top = style.top;
+hero.style.right = style.right;
+hero.style.transform = "scale(" + style.scale + ")";
+hero.style.filter = "drop-shadow(0 12px 25px rgba(0,0,0,0.25))";
+</script>
+</body>
+</html>

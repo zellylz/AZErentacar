@@ -1,0 +1,308 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f3f4f6;
+    color: #222;
+}
+
+.booking-page {
+    width: 92%;
+    margin: 24px auto;
+    background: white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.booking-hero {
+    height: 150px;
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url("image/yol.jpg") center/cover no-repeat;
+    position: relative;
+    padding: 26px 34px;
+    overflow: visible;
+}
+
+.booking-hero h1 {
+    color: white;
+    font-size: 34px;
+}
+
+.booking-hero img {
+    position: absolute;
+    right: 30px;
+    top: -20px;
+
+    width: 300px;
+    height: auto;
+
+    object-fit: contain;
+    transform: scale(1.15);
+}
+
+.booking-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* sağ dar, sol geniş */
+    gap: 24px;
+    padding: 0 34px 34px;
+}
+
+.left-area,
+.right-area {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.booking-card,
+.current-card,
+.summary-card,
+.payment-card {
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.booking-card {
+    margin-top: -38px;
+    padding: 18px 22px;
+    z-index: 2;
+}
+
+.booking-card h2 {
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.customer-line {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 14px;
+    margin-bottom: 12px;
+}
+
+.customer-line h3 {
+    margin-top: 16px;
+    font-size: 20px;
+}
+.customer-line img {
+    width: 280px;      /* büyüttük */
+    height: 120px;
+    object-fit: contain;
+    transform: scale(1.2); /* biraz zoom */
+}
+
+.date-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 1fr;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.status-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 130px;
+    align-items: center;
+    padding-top: 12px;
+}
+
+.status-row strong {
+    color: #159447;
+}
+
+.status-row button {
+    height: 38px;
+    border: none;
+    background: #29a857;
+    color: white;
+    font-weight: bold;
+}
+
+.current-card {
+    padding: 18px 22px;
+    min-height: 420px;   /* 👉 büyüttük */
+}
+
+.current-card h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: 42px auto 1fr 42px auto 1fr 42px auto;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.step {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+.active {
+    background: #54c878;
+}
+
+.orange {
+    background: #f5a623;
+}
+
+.gray {
+    background: #9b9b9b;
+}
+
+.line {
+    border-top: 2px dashed #aaa;
+}
+
+.road-car {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.right-area {
+    padding-top: 28px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+.summary-card,
+.payment-card {
+    padding: 18px;
+}
+
+.summary-card h3,
+.payment-card h3 {
+    margin-bottom: 18px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.summary-line.total strong {
+    font-size: 26px;
+}
+
+.payment-row {
+    display: grid;
+    grid-template-columns: 1fr 130px;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.payment-row button {
+    height: 38px;
+    background: #1f78d1;
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+.car-desc {
+    margin-top: 10px;
+    max-width: 430px;
+    line-height: 1.5;
+    color: #555;
+    font-size: 14px;
+}
+
+.select-area {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 12px 0;
+}
+
+.select-area label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.select-area select,
+.select-area input {
+    height: 38px;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    font-size: 14px;
+    outline: none;
+}
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.feature-grid div {
+    border: 1px solid #e2e2e2;
+    padding: 14px;
+    background: #fafafa;
+}
+
+.feature-grid strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.feature-grid span {
+    color: #555;
+    font-size: 14px;
+}
+
+.rent-action button {
+    background: #29a857;
+}
+.full-width {
+    grid-column: 1 / 3;
+}
+.rent-btn {
+    width: ½100;
+    height: 42px;
+    margin-top: auto;
+    margin-left: 0;   /* 👉 sağa yaslar */
+    display: block;
+    background: #29a857;
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.rent-btn:hover {
+    background: #218c47;
+}
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 🔥 en kritik */
+    height: 100%;
+}
+.info-text {
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: #666;
+    line-height: 1.5;
+
+    background: #f9fafb;
+    padding: 10px;
+    border-left: 3px solid #29a857;
+    border-radius: 4px;
+}

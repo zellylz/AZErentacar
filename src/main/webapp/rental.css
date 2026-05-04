@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f3f4f6;
+    color: #222;
+}
+
+.rental-page {
+    width: 92%;
+    margin: 24px auto;
+    background: white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.rental-hero {
+    height: 90px;
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url("image/yol3.jpg") center/cover no-repeat;
+    padding: 26px 34px;
+}
+
+.rental-hero h1 {
+    color: white;
+    font-size: 32px;
+}
+
+.rental-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    padding: 24px;
+}
+
+.map-box {
+    height: 360px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    background: white;
+    text-decoration: none;
+}
+
+.map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.car-on-map {
+    position: absolute;
+    width: 220px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 12px 18px rgba(0,0,0,0.35));
+}
+
+.map-pin {
+    position: absolute;
+    font-size: 34px;
+}
+
+.map-pin.pickup {
+    left: 20%;
+    top: 34%;
+}
+
+.map-pin.return {
+    right: 18%;
+    bottom: 26%;
+}
+
+.customer-card,
+.info-card {
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    padding: 18px;
+    margin-top: 20px;
+}
+
+.customer-card h2,
+.info-card h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+}
+
+.customer-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.info-card p {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+}
+
+.green {
+    color: #21a957;
+    font-weight: bold;
+}
+.payment-card {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.input-group label {
+    font-size: 13px;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.input-group input {
+    height: 38px;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+.pay-btn {
+    width: 100%;
+    height: 42px;
+    background: #29a857;
+    color: white;
+    border: none;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.pay-btn:hover {
+    background: #218c47;
+}
+
+.payment-info {
+    margin-top: 12px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+}
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 3px;
+    display: block;
+}
+
+input.error-input {
+    border: 1px solid red;
+}
+.success-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-box {
+    width: 380px;
+    background: white;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    border-radius: 6px;
+}
+
+.success-box h2 {
+    color: #29a857;
+    margin-bottom: 12px;
+}
+
+.success-box p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.success-box button {
+    width: 100%;
+    height: 40px;
+    background: #29a857;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}

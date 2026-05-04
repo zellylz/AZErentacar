@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Aze Rentacar</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body>
+
+<!-- GİRİŞ SAYFASI -->
+<section id="loginPage" class="login-page">
+
+    <div class="login-top">
+       <div class="logo">
+    <img src="image/logo.png">
+    <div>
+        <strong>AZE RENTACAR</strong>
+        <small>Corporate Car Rental</small>
+    </div>
+</div>
+
+        <nav>
+    <a href="#loginPage">Home</a>
+<a href="#popularCars">Our Cars</a>
+<a href="#aboutSection">About</a>
+<a href="#contactSection">Contact</a>
+</nav>
+
+        <button onclick="openRegisterBox()">Sign Up</button>
+    </div>
+
+    <div class="login-hero">
+        <div class="hero-text">
+            <span class="tag">Premium Car Fleet</span>
+            <h1>Start Discovering<br>Your Dream Car</h1>
+           <p>Get ready to travel with comfortable, safe and modern vehicles.</p>
+
+            <div class="hero-buttons">
+                <button onclick="scrollToLogin()">Login</button>
+<button class="light-btn" onclick="guestLogin()">Continue as Guest</button>
+            </div>
+        </div>
+
+        <div class="login-box" id="loginBox">
+            <h2>Login</h2>
+
+            <input id="email" type="email" placeholder="E-mail">
+            <input id="password" type="password" placeholder="Password">
+
+            <button onclick="login()">Login</button>
+<button class="guest" onclick="guestLogin()">Continue as Guest</button>
+        </div>
+
+        <div class="login-box hidden" id="registerBox">
+           <h2>Sign Up</h2>
+
+           <input type="text" placeholder="Full Name">
+            <input type="email" placeholder="E-mail">
+            <input type="password" placeholder="Password">
+
+            <button onclick="register()">Create Account</button>
+<button class="guest" onclick="openLoginBox()">Already have an account?</button>
+        </div>
+    </div>
+
+</section>
+<section id="popularCars" class="popular-section">
+   <h2>Popular Cars</h2>
+<p>Our most preferred rental vehicles</p>
+
+    <div class="popular-grid">
+        <div class="popular-card">
+            <img src="image/bmw-3-series.png">
+            <h3>BMW 3 Series</h3>
+            <p>Comfortable and premium driving experience.</p>
+           <button onclick="goCarsPage()">View More</button>
+        </div>
+
+        <div class="popular-card">
+            <img src="image/audi-a4.png">
+            <h3>Audi A4</h3>
+           <p>Ideal choice for city and long-distance driving.</p>
+            <button onclick="goCarsPage()">View More</button>
+        </div>
+
+        <div class="popular-card">
+            <img src="image/toyota-2.png">
+            <h3>Toyota Corolla</h3>
+            <p>Economical, reliable and practical.</p>
+           <button onclick="goCarsPage()">View More</button>
+        </div>
+    </div>
+</section>
+
+<section id="aboutSection" class="about-section">
+    <h2>About Us</h2>
+    <p>
+       RentaCar is a modern car rental platform that allows users to easily access reliable, comfortable and affordable vehicles. Our goal is to provide fast booking, up-to-date vehicle information and a high-quality service experience.
+    </p>
+
+    <div class="about-boxes">
+        <div>
+            <h3>Reliable Service</h3>
+            <p>Safe travel with regularly maintained vehicles.</p>
+</div>
+
+<div>
+    <h3>Wide Vehicle Fleet</h3>
+    <p>Options including economy, luxury and family-type vehicles.</p>
+</div>
+
+<div>
+    <h3>Members Only</h3>
+    <p>Special features such as map access, comments and ratings.</p>
+</div>
+    </div>
+</section>
+
+<section id="contactSection" class="contact-section">
+    <h2>Contact</h2>
+<p>You can use the information below to contact us.</p>
+
+    <div class="contact-box">
+        <p><strong>Phone:</strong> 0555 555 55 55</p>
+        <p><strong>E-mail:</strong> info@rentacar.com</p>
+        <p><strong>Address:</strong> İstanbul / Türkiye</p>
+    </div>
+</section>
+
+    <section class="cars-grid" id="carsList"></section>
+
+</section>
+
+<!-- ARAÇ DETAY MODALI -->
+<div id="carModal" class="modal hidden">
+    <div class="modal-card">
+        <button class="close" onclick="closeModal()">×</button>
+
+        <img id="modalCarImage" src="">
+        <h2 id="modalCarName"></h2>
+        <p id="modalCarPrice"></p>
+        <p id="modalCarStatus"></p>
+
+        <button id="rentBtn" onclick="rentCar()">Kirala</button>
+
+        <div id="memberFeatures" class="member-box hidden">
+           <h3>Members Only</h3>
+
+            <button onclick="showMap()">Show on map</button>
+
+            <textarea id="commentInput" placeholder="Yorum yaz..."></textarea>
+            <select id="ratingInput">
+                <option value="5">5 Puan</option>
+                <option value="4">4 Puan</option>
+                <option value="3">3 Puan</option>
+                <option value="2">2 Puan</option>
+                <option value="1">1 Puan</option>
+            </select>
+
+            <button onclick="addComment()">Yorum Yap</button>
+
+            <div id="comments"></div>
+        </div>
+
+        <div id="guestWarning" class="warning hidden">
+           Map, comment and rating features are available for members only.
+        </div>
+    </div>
+</div>
+<script src="user.js"></script>
+</body>
+</html>

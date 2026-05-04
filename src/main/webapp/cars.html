@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Araçlarımız - Aze Rentacar</title>
+    <link rel="stylesheet" href="cars.css">
+</head>
+<body>
+
+<header class="cars-header">
+    <div class="logo">
+        <img src="image/logo.png">
+        <div>
+            <strong>AZE RENTACAR</strong>
+            <small>Corporate Car Rental</small>
+        </div>
+    </div>
+
+    <nav>
+         <a href="#loginPage">Home</a>
+<a href="#popularCars">Our Cars</a>
+<a href="#aboutSection">About</a>
+<a href="#contactSection">Contact</a>
+    </nav>
+</header>
+
+<section class="search-hero">
+    <div class="overlay">
+        <h1>Find Your Perfect Car</h1>
+        <p>Search Filter</p>
+
+        <div class="filter-box">
+            <select>
+                <option>Pick Up Location</option>
+                <option>İstanbul</option>
+                <option>Ankara</option>
+                <option>İzmir</option>
+            </select>
+
+            <input type="date">
+
+            <input type="date">
+
+            <select>
+                <option>Car Type</option>
+                <option>Sedan</option>
+                <option>SUV</option>
+                <option>Hatchback</option>
+            </select>
+
+            <select>
+                <option>Price Range</option>
+                <option>€50 - €80</option>
+                <option>€80 - €120</option>
+                <option>€120+</option>
+            </select>
+
+            <button>Book Range</button>
+        </div>
+    </div>
+</section>
+
+<section class="car-list">
+
+    <div class="car-row">
+        <img class="small-img" src="image/golf2.jpg">
+
+        <div class="car-info">
+            <h2>Volkswagen Golf</h2>
+            <p>Pendik, 5 days</p>
+            <p>Automatic, 4 Seats</p>
+        </div>
+
+        <div class="price-area">
+            <strong>€50/day</strong>
+            <button onclick="bookCar('Volkswagen Golf')">Book Now</button>
+        </div>
+
+        <img class="big-img" src="image/wolkswagen-golf.png">
+    </div>
+
+    <div class="car-row">
+        <img class="small-img" src="image/eqa-2.png">
+
+        <div class="car-info">
+            <h2>Mercedes EQA</h2>
+            <p>Pendik, 5 days</p>
+            <p>Automatic, 4 Seats</p>
+        </div>
+
+        <div class="price-area">
+            <strong>€95/day</strong>
+            <button onclick="bookCar('Mercedes EQA')">Book Now</button>
+        </div>
+
+        <img class="big-img" src="image/car.png">
+    </div>
+
+    <div class="car-row">
+        <img class="small-img" src="image/bmw-2.png">
+
+        <div class="car-info">
+            <h2>BMW 3</h2>
+            <p>Kadıköy, 3 days</p>
+            <p>Automatic, 5 Seats</p>
+        </div>
+
+        <div class="price-area">
+            <strong>€120/day</strong>
+            <button onclick="bookCar('BMW 3')">Book Now</button>
+        </div>
+
+        <img class="big-img" src="image/bmw-3-series.png">
+    </div>
+    <div class="car-row">
+    <img class="small-img" src="image/toyota-4.png">
+
+    <div class="car-info">
+        <h2>Toyota Corolla</h2>
+        <p>Maltepe, 4 days</p>
+        <p>Automatic, 5 Seats</p>
+    </div>
+
+    <div class="price-area">
+        <strong>€70/day</strong>
+        <button onclick="bookCar('Toyota Corolla')">Book Now</button>
+    </div>
+
+    <img class="big-img" src="image/toyota-2.png">
+</div>
+
+<div class="car-row">
+    <img class="small-img" src="image/renault-clio.png">
+
+    <div class="car-info">
+        <h2>Renault Clio</h2>
+        <p>Üsküdar, 2 days</p>
+        <p>Manual, 5 Seats</p>
+    </div>
+
+    <div class="price-area">
+        <strong>€60/day</strong>
+        <button onclick="bookCar('Renault Clio')">Book Now</button>
+    </div>
+
+    <img class="big-img" src="image/renault-3.png">
+</div>
+
+<div class="car-row">
+    <img class="small-img" src="image/audi-a4.png">
+
+    <div class="car-info">
+        <h2>Audi A4</h2>
+        <p>Kartal, 3 days</p>
+        <p>Automatic, 5 Seats</p>
+    </div>
+
+    <div class="price-area">
+        <strong>€110/day</strong>
+        <button onclick="bookCar('Audi A4')">Book Now</button>
+    </div>
+
+    <img class="big-img" src="image/audi-a4-3.png">
+</div>
+
+</section>
+
+<script src="cars.js"></script>
+</body>
+</html>

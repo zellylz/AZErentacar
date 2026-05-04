@@ -1,0 +1,157 @@
+.vehicles-hero {
+    height: 230px;
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 28px;
+    color: white;
+    background:
+            linear-gradient(90deg, rgba(15,31,51,0.88), rgba(15,31,51,0.25)),
+            url("image/city.jpeg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    position: relative;
+}
+
+.vehicles-hero h1 {
+    color: white;
+    margin-bottom: 8px;
+}
+
+.vehicles-hero p {
+    color: #e8eef7;
+}
+
+.vehicle-filters {
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: 24px;
+    z-index: 5;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+
+    margin: 0;
+    padding: 0;
+}
+.vehicle-filters select,
+.vehicle-filters input {
+    height: 42px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 0 14px;
+    background: white;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.20);
+    font-size: 13px;
+}
+
+.admin-car-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.admin-car-card {
+    min-height: 135px;
+    background: white;
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 160px 1.2fr 130px 220px 150px;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    transition: 0.25s ease;
+}
+
+.admin-car-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 34px rgba(0,0,0,0.16);
+}
+
+.car-thumb {
+    width: 155px;
+    height: 92px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #f4f6f8;
+}
+
+.admin-car-info h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: #111;
+}
+
+.admin-car-info p {
+    color: #555;
+    margin-bottom: 7px;
+}
+
+.admin-car-info small {
+    color: #777;
+}
+
+.admin-car-price strong {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.vehicle-status {
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.vehicle-status.available {
+    background: #e7f8ef;
+    color: #14935c;
+}
+
+.vehicle-status.rented {
+    background: #fff4dd;
+    color: #d98900;
+}
+
+.vehicle-status.maintenance {
+    background: #ffe8e8;
+    color: #d63031;
+}
+
+.car-big-img {
+    width: 220px;
+    height: 105px;
+    object-fit: contain;
+}
+
+.vehicle-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vehicle-actions button {
+    border: none;
+    border-radius: 10px;
+    padding: 11px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.edit-btn {
+    background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+    color: white;
+}
+
+.details-btn {
+    background: #eef3f8;
+    color: #1e3c5c;
+}
