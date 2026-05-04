@@ -1,0 +1,198 @@
+.customer-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.customer-stat-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    transition: 0.25s ease;
+}
+
+.customer-stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.customer-stat-card i {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.customer-stat-card p {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.customer-stat-card h2 {
+    font-size: 28px;
+}
+
+.customers-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 20px;
+}
+
+.customers-list-panel,
+.customer-profile-panel {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.customer-list {
+    padding: 10px;
+}
+
+.customer-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.customer-row:hover,
+.customer-row.active-customer {
+    background: #f3f8ff;
+    transform: translateX(4px);
+}
+
+.customer-avatar-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #eaf3ff;
+    color: #2f83d4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.customer-main-info {
+    flex: 1;
+}
+
+.customer-main-info small {
+    display: block;
+    color: #777;
+    margin-top: 4px;
+}
+
+.customer-badge {
+    padding: 7px 12px;
+    border-radius: 18px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.customer-badge.good {
+    background: #e7f8ef;
+    color: #14935c;
+}
+
+.customer-badge.normal {
+    background: #eef3f8;
+    color: #555;
+}
+
+.customer-badge.risk {
+    background: #ffe8e8;
+    color: #d63031;
+}
+
+.customer-profile-panel {
+    padding: 22px;
+}
+
+.profile-top {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.big-avatar {
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.profile-top h2 {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.profile-top p {
+    color: #777;
+}
+
+.profile-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.profile-info-grid div {
+    background: #f7f9fc;
+    padding: 14px;
+    border-radius: 12px;
+}
+
+.profile-info-grid span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.profile-info-grid strong {
+    font-size: 14px;
+}
+
+.rental-history-box {
+    margin-top: 22px;
+}
+
+.rental-history-box h3 {
+    margin-bottom: 12px;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px;
+    border-radius: 12px;
+    background: #f7f9fc;
+    margin-bottom: 10px;
+}
+
+.history-item small {
+    color: #777;
+}
