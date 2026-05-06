@@ -1,0 +1,829 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      lang="tr" xml:lang="tr">
+<head>
+    <!-- AZErentacar XHTML build marker: 2026-05-05-2 -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Araç Kiralama Paneli</title>
+    <link rel="stylesheet" href="style.css?v=3"/>
+    <link rel="stylesheet" href="reservations.css?v=3"/>
+      <link rel="stylesheet" href="customer.css?v=3"/>
+      <link rel="stylesheet" href="reports.css?v=3"/>
+     <link rel="stylesheet" href="vehicles.css?v=4"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family:Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <div class="sidebar">
+       <div class="logo">
+           <img src="image/logo.png" class="logo-img" alt="RentaCar Logo"/>
+           <span>RentaCar</span>
+       </div>
+
+        <div class="menu">
+            <a class="active" data-page="panel" onclick="showAdminPage('panel', this); return false;"><i class="fa-solid fa-gauge-high"></i>Panel</a>
+            <a data-page="reservations" onclick="showAdminPage('reservations', this); return false;"><i class ="fa-regular fa-calendar-check"></i>Rezervasyonlar</a>
+            <a href="#vehiclesSection" data-page="vehicles" onclick="showAdminPage('vehicles', this);"><i class="fa-solid fa-car-side"></i>Araçlar </a>
+            <a data-page="customers" onclick="showAdminPage('customers', this); return false;"><i class="fa-solid fa-users"></i>Müşteriler</a>
+            <a data-page="reports" onclick="showAdminPage('reports', this); return false;"><i class="fa-solid fa-chart-column"></i>Raporlar</a>
+            <a href="cars.xhtml"><i class="fa-solid fa-house"></i>Siteye Dön</a>
+
+        </div>
+
+
+    </div>
+
+    <div class="main-content">
+        <h1>Araç Kiralama Paneli</h1>
+
+        <div class="stats-grid">
+            <div class="stat-card cyan">
+                <p>Toplam Araç:</p>
+                <h2>#{aracBean.toplamAracSayisi}</h2>
+                <div class="mini-chart"></div>
+            </div>
+
+            <div class="stat-card blue">
+                <p>Aktif Kiralamalar:</p>
+                <h2>45</h2>
+                <div class="mini-chart"></div>
+            </div>
+
+            <div class="stat-card orange">
+                <p>Bekleyen Rezervasyonlar:</p>
+                <h2>12</h2>
+                <div class="mini-chart"></div>
+            </div>
+
+            <div class="stat-card orange">
+                <p>Bu Ayki Kazanç:</p>
+                <h2>8,750 TL</h2>
+                <div class="mini-chart"></div>
+            </div>
+        </div>
+
+        <div class="middle-grid">
+            <div class="panel chart-panel">
+                <h3>Rezervasyon Özeti</h3>
+
+                <div class="booking-chart">
+                    <div class="chart-values">
+    <small>100</small>
+    <small>80</small>
+    <small>60</small>
+    <small>40</small>
+    <small>20</small>
+</div>
+    <div class="booking-bars">
+        <span class="gray" style="height:35%"></span>
+        <span class="blue" style="height:50%"></span>
+        <span class="orange" style="height:45%"></span>
+        <span class="gray" style="height:70%"></span>
+        <span class="blue" style="height:90%"></span>
+        <span class="orange" style="height:75%"></span>
+        <span class="gray" style="height:40%"></span>
+        <span class="blue" style="height:72%"></span>
+        <span class="orange" style="height:50%"></span>
+        <span class="gray" style="height:76%"></span>
+        <span class="blue" style="height:48%"></span>
+        <span class="orange" style="height:82%"></span>
+    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="booking-line" viewBox="0 0 300 120" preserveAspectRatio="none">
+       <!-- 2. çizgi (turuncu) -->
+<polyline class="second-line"
+points="10,30 35,40 60,55 85,85 110,65 135,40 160,70 185,90 210,50 235,35 260,65 290,85" />
+
+<!-- 1. çizgi (mavi) -->
+<polyline class="main-line"
+points="10,90 35,78 60,65 85,35 110,55 135,82 160,42 185,22 210,70 235,92 260,48 290,25" />
+        <circle cx="10" cy="90" r="3"/>
+        <circle cx="35" cy="78" r="3"/>
+        <circle cx="60" cy="65" r="3"/>
+        <circle cx="85" cy="35" r="3"/>
+        <circle cx="110" cy="55" r="3"/>
+        <circle cx="135" cy="82" r="3"/>
+        <circle cx="160" cy="42" r="3"/>
+        <circle cx="185" cy="22" r="3"/>
+        <circle cx="210" cy="70" r="3"/>
+        <circle cx="235" cy="92" r="3"/>
+        <circle cx="260" cy="48" r="3"/>
+        <circle cx="290" cy="25" r="3"/>
+    </svg>
+              <div class="months">
+        <small>Oca</small>
+        <small>Şub</small>
+        <small>Mar</small>
+        <small>Nis</small>
+        <small>May</small>
+        <small>Haz</small>
+        <small>Tem</small>
+        <small>Ağu</small>
+        <small>Eyl</small>
+        <small>Eki</small>
+        <small>Kas</small>
+        <small>Ara</small>
+    </div>
+
+</div>
+            </div>
+
+            <div class="panel revenue-panel">
+                <h3>Gelir İstatistikleri</h3>
+               <img src="image/car.png" alt="Rental Car"/>
+                <div class="car-info">
+                    <span>Sonata, S 3000s</span>
+                    <strong>700 TL/gün</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-grid">
+           <div class="panel upcoming-panel">
+
+
+
+    <h3>Yaklaşan Kiralamalar</h3>
+
+    <div class="rental-list">
+        <ui:repeat value="#{kiralamaIslemiBean.kiralamalar}" var="kiralama">
+            <div class="rental-row">
+                <div class="avatar">👤</div>
+                <span class="rental-details">
+                    <strong>#{kiralama.kullanici.adSoyad} - #{kiralama.arac.marka} #{kiralama.arac.model}</strong>
+                    <small>#{kiralama.kullanici.email} · #{kiralama.kullanici.telefon}</small>
+                </span>
+                <small>#{kiralama.baslangicTarihi}</small>
+            </div>
+        </ui:repeat>
+    </div>
+</div>
+
+
+            <div class="panel available-panel">
+                <h3>Müsait Araçlar</h3>
+
+
+
+    <div class="car-list">
+        <ui:repeat value="#{aracBean.musaitAraclar}" var="arac">
+            <div class="car-row">
+                <img src="#{aracBean.aracResmi(arac)}" alt="#{arac.marka} #{arac.model}"/>
+                <span>#{arac.marka} #{arac.model}</span>
+                <strong>#{arac.gunlukUcret} TL/gün</strong>
+            </div>
+        </ui:repeat>
+        <ui:fragment rendered="#{empty aracBean.musaitAraclar}">
+            <div class="empty-car-list">Müsait araç bulunmuyor.</div>
+        </ui:fragment>
+    </div>
+</div>
+        </div>
+        <div class="reservations-page page-section">
+    <div class="page-header">
+        <div>
+            <h1>Rezervasyonlar</h1>
+            <p>Tüm müşteri rezervasyonlarını, ödeme durumlarını ve kiralama takvimlerini yönetin.</p>
+        </div>
+
+        <button class="add-reservation-btn">
+            <i class="fa-solid fa-plus"></i>
+            Yeni Rezervasyon
+        </button>
+    </div>
+
+    <div class="reservation-stats">
+        <div class="reservation-stat-card">
+            <span class="stat-icon blue-bg">
+                <i class="fa-solid fa-calendar-check"></i>
+            </span>
+            <div>
+                <p>Toplam Rezervasyon</p>
+                <h2>128</h2>
+            </div>
+        </div>
+
+        <div class="reservation-stat-card">
+            <span class="stat-icon green-bg">
+                <i class="fa-solid fa-circle-check"></i>
+            </span>
+            <div>
+                <p>Onaylandı</p>
+                <h2>84</h2>
+            </div>
+        </div>
+
+        <div class="reservation-stat-card">
+            <span class="stat-icon orange-bg">
+                <i class="fa-solid fa-clock"></i>
+            </span>
+            <div>
+                <p>Bekliyor</p>
+                <h2>31</h2>
+            </div>
+        </div>
+
+        <div class="reservation-stat-card">
+            <span class="stat-icon orange-bg">
+                <i class="fa-solid fa-ban"></i>
+            </span>
+            <div>
+                <p>İptal Edildi</p>
+                <h2>13</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="reservation-content-grid">
+        <div class="reservation-table-panel">
+            <div class="panel-top">
+                <h3>Son Rezervasyonlar</h3>
+
+                <div class="reservation-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Rezervasyon ara..."/>
+                </div>
+            </div>
+
+            <table class="reservation-table">
+                <thead>
+                    <tr>
+                        <th>Müşteri</th>
+                        <th>Araç</th>
+                        <th>Teslim Alma</th>
+                        <th>İade</th>
+                        <th>Ödeme</th>
+                        <th>Durum</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="customer-cell">
+                                <span class="table-avatar">JD</span>
+                                <div>
+                                    <strong>John Doe</strong>
+                                    <small>john.doe@gmail.com</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>BMW 3 Series</td>
+                        <td>Nis 29, 2026</td>
+                        <td>May 03, 2026</td>
+                        <td>340 TL</td>
+                        <td><span class="status confirmed">Onaylandı</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="customer-cell">
+                                <span class="table-avatar">ES</span>
+                                <div>
+                                    <strong>Emily Stone</strong>
+                                    <small>emily.stone@gmail.com</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Audi A4</td>
+                        <td>May 01, 2026</td>
+                        <td>May 05, 2026</td>
+                        <td>280 TL</td>
+                        <td><span class="status pending">Bekliyor</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="customer-cell">
+                                <span class="table-avatar">MB</span>
+                                <div>
+                                    <strong>Michael Brown</strong>
+                                    <small>michael.brown@gmail.com</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Toyota Corolla</td>
+                        <td>May 02, 2026</td>
+                        <td>May 06, 2026</td>
+                        <td>180 TL</td>
+                        <td><span class="status confirmed">Onaylandı</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="customer-cell">
+                                <span class="table-avatar">DM</span>
+                                <div>
+                                    <strong>David Miller</strong>
+                                    <small>david.miller@gmail.com</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Mercedes EQA</td>
+                        <td>May 02, 2026</td>
+                        <td>May 08, 2026</td>
+                        <td>570 TL</td>
+                        <td><span class="status cancelled">İptal Edildi</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="reservation-detail-card">
+            <h3>Günün Öne Çıkanı</h3>
+
+            <div class="highlight-car">
+                <img src="image/bmw-3-series.png" alt="BMW 3 Series"/>
+            </div>
+
+            <h2>BMW 3 Series</h2>
+            <p>Rezerve eden <strong>John Doe</strong></p>
+
+            <div class="detail-list">
+                <div>
+                    <span>Teslim Alma Tarihi</span>
+                    <strong>Nis 29, 2026</strong>
+                </div>
+
+                <div>
+                    <span>İade Tarihi</span>
+                    <strong>May 03, 2026</strong>
+                </div>
+
+                <div>
+                    <span>Toplam Ücret</span>
+                    <strong>340 TL</strong>
+                </div>
+
+                <div>
+                    <span>Ödeme</span>
+                    <strong class="paid-text">Ödendi</strong>
+                </div>
+            </div>
+
+            <button class="view-reservation-btn">Detayları Gör</button>
+        </div>
+    </div>
+</div>
+        <div class="customers-page page-section">
+    <div class="page-header">
+        <div>
+            <h1>Müşteriler</h1>
+            <p>Müşteri profillerini, kiralama geçmişini, iletişim bilgilerini ve risk durumunu görüntüleyin.</p>
+        </div>
+
+        <button class="add-reservation-btn">
+            <i class="fa-solid fa-user-plus"></i>
+            Müşteri Ekle
+        </button>
+    </div>
+
+    <div class="customer-stats">
+        <div class="customer-stat-card">
+            <i class="fa-solid fa-users"></i>
+            <div>
+                <p>Toplam Müşteri</p>
+                <h2>#{kullaniciBean.toplamMusteriSayisi}</h2>
+            </div>
+        </div>
+
+        <div class="customer-stat-card">
+            <i class="fa-solid fa-user-check"></i>
+            <div>
+                <p>Aktif Müşteriler</p>
+                <h2>216</h2>
+            </div>
+        </div>
+
+        <div class="customer-stat-card">
+            <i class="fa-solid fa-car"></i>
+            <div>
+                <p>Sık Kiralayanlar</p>
+                <h2>48</h2>
+            </div>
+        </div>
+
+        <div class="customer-stat-card">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div>
+                <p>Riskli Kayıtları</p>
+                <h2>9</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="customers-grid">
+        <div class="customers-list-panel">
+            <div class="panel-top">
+                <h3>Müşteri Listesi</h3>
+
+                <div class="reservation-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Müşteri ara..."/>
+                </div>
+            </div>
+
+            <div class="customer-list">
+                <div class="customer-row active-customer">
+                    <div class="customer-avatar-box">JD</div>
+                    <div class="customer-main-info">
+                        <strong>John Doe</strong>
+                        <small>john.doe@gmail.com</small>
+                    </div>
+                    <span class="customer-badge good">Güvenilir</span>
+                </div>
+
+                <div class="customer-row">
+                    <div class="customer-avatar-box">ES</div>
+                    <div class="customer-main-info">
+                        <strong>Emily Stone</strong>
+                        <small>emily.stone@gmail.com</small>
+                    </div>
+                    <span class="customer-badge good">Güvenilir</span>
+                </div>
+
+                <div class="customer-row">
+                    <div class="customer-avatar-box">MB</div>
+                    <div class="customer-main-info">
+                        <strong>Michael Brown</strong>
+                        <small>michael.brown@gmail.com</small>
+                    </div>
+                    <span class="customer-badge normal">Normal</span>
+                </div>
+
+                <div class="customer-row">
+                    <div class="customer-avatar-box">DM</div>
+                    <div class="customer-main-info">
+                        <strong>David Miller</strong>
+                        <small>david.miller@gmail.com</small>
+                    </div>
+                    <span class="customer-badge risk">Riskli</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="customer-profile-panel">
+            <div class="profile-top">
+                <div class="big-avatar">JD</div>
+                <h2>John Doe</h2>
+                <p>Premium Müşteri</p>
+            </div>
+
+            <div class="profile-info-grid">
+                <div>
+                    <span>Telefon</span>
+                    <strong>+90 555 123 45 67</strong>
+                </div>
+
+                <div>
+                    <span>Email</span>
+                    <strong>john.doe@gmail.com</strong>
+                </div>
+
+                <div>
+                    <span>Toplam Kiralama</span>
+                    <strong>12</strong>
+                </div>
+
+                <div>
+                    <span>Kaza Geçmişi</span>
+                    <strong>Kayıt yok</strong>
+                </div>
+            </div>
+
+            <div class="rental-history-box">
+                <h3>Kiralama Geçmişi</h3>
+
+                <div class="history-item">
+                    <span>BMW 3 Series</span>
+                    <small>Nis 2026</small>
+                </div>
+
+                <div class="history-item">
+                    <span>Audi A4</span>
+                    <small>Şub 2026</small>
+                </div>
+
+                <div class="history-item">
+                    <span>Toyota Corolla</span>
+                    <small>Oca 2026</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="reports-page page-section">
+    <div class="page-header">
+        <div>
+            <h1>Raporlar</h1>
+            <p>Gelirleri, rezervasyonları, araç performansını ve ödeme analizlerini takip edin.</p>
+        </div>
+
+        <button class="add-reservation-btn">
+            <i class="fa-solid fa-download"></i>
+            Export Report
+        </button>
+    </div>
+
+    <div class="report-stats">
+        <div class="report-card">
+            <p>Toplam Gelir</p>
+            <h2>42,850 TL</h2>
+            <span class="positive">+18.4% bu ay</span>
+        </div>
+
+        <div class="report-card">
+            <p>Toplam Kiralama</p>
+            <h2>312</h2>
+            <span class="positive">+9.2% bu ay</span>
+        </div>
+
+        <div class="report-card">
+            <p>İptal Edilen Rezervasyonlar</p>
+            <h2>24</h2>
+            <span class="negative">-3.1% iyileşme</span>
+        </div>
+
+        <div class="report-card">
+            <p>Ortalama Günlük Gelir</p>
+            <h2>1,428 TL</h2>
+            <span class="positive">Dengeli performans</span>
+        </div>
+    </div>
+
+    <div class="reports-grid">
+        <div class="report-panel large-report">
+            <div class="report-panel-header">
+                <h3>Aylık Gelir</h3>
+                <span>2026</span>
+            </div>
+
+            <div class="revenue-line-chart">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 220" preserveAspectRatio="none">
+                    <polyline
+                        points="10,170 55,140 100,155 145,110 190,125 235,75 280,95 325,55 370,80 415,45 460,65 490,30"
+                        class="report-line"
+                    />
+
+                    <circle cx="10" cy="170" r="5"/>
+                    <circle cx="55" cy="140" r="5"/>
+                    <circle cx="100" cy="155" r="5"/>
+                    <circle cx="145" cy="110" r="5"/>
+                    <circle cx="190" cy="125" r="5"/>
+                    <circle cx="235" cy="75" r="5"/>
+                    <circle cx="280" cy="95" r="5"/>
+                    <circle cx="325" cy="55" r="5"/>
+                    <circle cx="370" cy="80" r="5"/>
+                    <circle cx="415" cy="45" r="5"/>
+                    <circle cx="460" cy="65" r="5"/>
+                    <circle cx="490" cy="30" r="5"/>
+                </svg>
+
+                <div class="report-months">
+                    <span>Oca</span>
+                    <span>Şub</span>
+                    <span>Mar</span>
+                    <span>Nis</span>
+                    <span>May</span>
+                    <span>Haz</span>
+                    <span>Tem</span>
+                    <span>Ağu</span>
+                    <span>Eyl</span>
+                    <span>Eki</span>
+                    <span>Kas</span>
+                    <span>Ara</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-panel">
+            <div class="report-panel-header">
+                <h3>Ödeme Durumu</h3>
+                <span>Bu ay</span>
+            </div>
+
+            <div class="payment-donut">
+                <div class="donut"></div>
+
+                <div class="donut-info">
+                    <p><span class="dot paid"></span> Ödendi 68%</p>
+                    <p><span class="dot pending"></span> Bekliyor 22%</p>
+                    <p><span class="dot cancel"></span> İptal Edildi 10%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reports-bottom-grid">
+        <div class="report-panel">
+            <div class="report-panel-header">
+                <h3>En Çok Kiralanan Araçlar</h3>
+                <span>Performans</span>
+            </div>
+
+            <div class="vehicle-performance">
+                <div class="vehicle-bar">
+                    <div>
+                        <strong>BMW 3 Series</strong>
+                        <small>82 rentals</small>
+                    </div>
+                    <span style="width: 92%"></span>
+                </div>
+
+                <div class="vehicle-bar">
+                    <div>
+                        <strong>Audi A4</strong>
+                        <small>74 rentals</small>
+                    </div>
+                    <span style="width: 84%"></span>
+                </div>
+
+                <div class="vehicle-bar">
+                    <div>
+                        <strong>Toyota Corolla</strong>
+                        <small>61 rentals</small>
+                    </div>
+                    <span style="width: 70%"></span>
+                </div>
+
+                <div class="vehicle-bar">
+                    <div>
+                        <strong>Mercedes EQA</strong>
+                        <small>48 rentals</small>
+                    </div>
+                    <span style="width: 55%"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-panel">
+            <div class="report-panel-header">
+                <h3>Hızlı İçgörüler</h3>
+                <span>Özet</span>
+            </div>
+
+            <div class="insight-list">
+                <div class="insight-item">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                    <div>
+                        <strong>Gelir arttı</strong>
+                        <small>Ekim ayı en yüksek aylık geliri oluşturdu.</small>
+                    </div>
+                </div>
+
+                <div class="insight-item">
+                    <i class="fa-solid fa-car-side"></i>
+                    <div>
+                        <strong>BMW 3 Series en çok kiralanan araç</strong>
+                        <small>Premium müşteriler arasında en yüksek talep.</small>
+                    </div>
+                </div>
+
+                <div class="insight-item">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <div>
+                        <strong>İptal oranı düşük</strong>
+                        <small>Rezervasyonların yalnızca %10’u iptal edildi.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <div id="vehiclesSection" class="vehicles-page vehicles-visible-section">
+    <div class="vehicles-hero">
+        <div>
+            <h1>Araç Yönetimi</h1>
+            <p>Müsait araçları, fiyatları, durumları ve kiralama koşullarını yönetin.</p>
+        </div>
+
+        <button class="add-reservation-btn">
+            <i class="fa-solid fa-plus"></i>
+            Araç Ekle
+        </button>
+
+
+    <div class="vehicle-filters">
+        <select>
+            <option>Tüm Konumlar</option>
+            <option>İstanbul</option>
+            <option>Ankara</option>
+            <option>Malatya</option>
+        </select>
+
+        <select>
+            <option>Tüm Araç Tipleri</option>
+            <option>Sedan</option>
+            <option>SUV</option>
+            <option>Hatchback</option>
+        </select>
+
+        <select>
+            <option>Durum</option>
+            <option>Müsait</option>
+            <option>Kirada</option>
+            <option>Bakımda</option>
+        </select>
+
+        <input type="text" placeholder="Araç ara..."/>
+    </div>
+ </div>
+    <div class="admin-car-list">
+        <div class="admin-car-card">
+            <img class="car-thumb" src="image/golf2.jpg" alt="Volkswagen Golf"/>
+
+            <div class="admin-car-info">
+                <h3>Volkswagen Golf</h3>
+                <p>Otomatik, 4 Koltuk</p>
+                <small>Plaka: 34 AZE 104</small>
+            </div>
+
+            <div class="admin-car-price">
+                <strong>50 TL/gün</strong>
+                <span class="vehicle-status available">Müsait</span>
+            </div>
+
+            <img class="car-big-img" src="image/wolkswagen-golf.png" alt="Volkswagen Golf"/>
+
+            <div class="vehicle-actions">
+                <button class="edit-btn">Düzenle</button>
+                <button class="details-btn">Detaylar</button>
+            </div>
+        </div>
+
+        <div class="admin-car-card">
+            <img class="car-thumb" src="image/bmw-2.png" alt="BMW 3 Series"/>
+
+            <div class="admin-car-info">
+                <h3>BMW 3 Series</h3>
+                <p>Otomatik, 5 Koltuk</p>
+                <small>Plaka: 44 BMW 330</small>
+            </div>
+
+            <div class="admin-car-price">
+                <strong>85 TL/gün</strong>
+                <span class="vehicle-status rented">Kirada</span>
+            </div>
+
+            <img class="car-big-img" src="image/bmw-3-series.png" alt="BMW 3 Series"/>
+
+            <div class="vehicle-actions">
+                <button class="edit-btn">Düzenle</button>
+                <button class="details-btn">Detaylar</button>
+            </div>
+        </div>
+
+        <div class="admin-car-card">
+            <img class="car-thumb" src="image/audi-2.png" alt="Audi A4"/>
+
+            <div class="admin-car-info">
+                <h3>Audi A4</h3>
+                <p>Otomatik, 5 Koltuk</p>
+                <small>Plaka: 06 AUD 404</small>
+            </div>
+
+            <div class="admin-car-price">
+                <strong>70 TL/gün</strong>
+                <span class="vehicle-status available">Müsait</span>
+            </div>
+
+            <img class="car-big-img" src="image/audi-a4.png" alt="Audi A4"/>
+
+            <div class="vehicle-actions">
+                <button class="edit-btn">Düzenle</button>
+                <button class="details-btn">Detaylar</button>
+            </div>
+        </div>
+
+        <div class="admin-car-card">
+            <img class="car-thumb" src="image/eqa-2.png" alt="Mercedes EQA"/>
+
+            <div class="admin-car-info">
+                <h3>Mercedes EQA</h3>
+                <p>Elektrik, 5 Koltuk</p>
+                <small>Plaka: 34 EQA 700</small>
+            </div>
+
+            <div class="admin-car-price">
+                <strong>95 TL/gün</strong>
+                <span class="vehicle-status maintenance">Bakımda</span>
+            </div>
+
+            <img class="car-big-img" src="image/car.png" alt="Mercedes EQA"/>
+
+            <div class="vehicle-actions">
+                <button class="edit-btn">Düzenle</button>
+                <button class="details-btn">Detaylar</button>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+</div>
+<script type="text/javascript" src="admin.js?v=6"></script>
+</body>
+</html>

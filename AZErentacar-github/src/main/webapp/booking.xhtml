@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Rezervasyon Detayları</title>
+    <link rel="stylesheet" href="booking.css"/>
+</head>
+<body>
+
+<section class="booking-page">
+
+    <div class="booking-hero">
+        <h1>Rezervasyon Detayları</h1>
+        <div class="page-links">
+            <a href="cars.xhtml">Araçlara Dön</a>
+            <a href="cars.xhtml">Ana Sayfa</a>
+        </div>
+        <img id="heroCar" src=""/>
+    </div>
+
+    <div class="booking-layout">
+
+    <div class="left-area">
+
+        <div class="booking-card">
+            <h2>☑ Car Details</h2>
+
+            <div class="customer-line">
+                <div>
+                    <p><strong>Kategori:</strong> Kompakt / Ekonomi</p>
+                    <h3 id="carName">Volkswagen Golf</h3>
+                    <p id="carDesc" class="car-desc">
+                        Şehir içi ve uzun yol sürüşleri için pratik, konforlu ve yakıt tasarruflu hatchback.
+                    </p>
+                </div>
+
+                <img id="smallCar" src=""/>
+            </div>
+
+            <div class="date-row">
+                <span>Motor</span>
+                <strong id="engineInfo">1.5 TSI Benzin</strong>
+                <strong id="gearInfo">Otomatik</strong>
+            </div>
+
+            <div class="date-row">
+                <span>Kapasite</span>
+                <strong id="seatInfo">5 Koltuk</strong>
+                <strong id="fuelInfo">Benzin</strong>
+            </div>
+
+            <div class="status-row">
+                <span>Durum:</span>
+                <strong id="availableInfo">Müsait</strong>
+                <button>✓ Kiralanabilir</button>
+            </div>
+        </div>
+
+        <div class="current-card">
+            <h2>Araç Özellikleri</h2>
+
+            <div class="feature-grid">
+                <div>
+                    <strong>Vites</strong>
+                    <span id="featureGear">Otomatik</span>
+                </div>
+
+                <div>
+                    <strong>Yakıt Tipi</strong>
+                    <span id="featureFuel">Benzin</span>
+                </div>
+
+                <div>
+                    <strong>Koltuk</strong>
+                    <span id="featureSeats">5 Koltuk</span>
+                </div>
+
+                <div>
+                    <strong>Kullanım</strong>
+                    <span>Şehir İçi / Uzun Yol</span>
+                </div>
+            </div>
+
+            <img class="road-car" src="image/golf-3.jpg"/>
+        </div>
+
+    </div>
+
+    <div class="right-area">
+
+        <div class="summary-card">
+            <h3>Üye Bilgileri</h3>
+
+            <div class="summary-line">
+                <span>Ad Soyad:</span>
+                <strong>#{loginBean.girisYapanKullanici.adSoyad}</strong>
+            </div>
+
+            <div class="summary-line">
+                <span>Email:</span>
+                <strong>#{loginBean.girisYapanKullanici.email}</strong>
+            </div>
+
+            <div class="summary-line">
+                <span>Telefon:</span>
+                <strong>#{loginBean.girisYapanKullanici.telefon}</strong>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <h3>Kiralama Özeti</h3>
+
+            <div class="select-area">
+                <label>Teslim Alma Tarihi</label>
+                <input id="pickDate" type="date"/>
+            </div>
+
+            <div class="select-area">
+                <label>İade Tarihi</label>
+                <input id="returnDate" type="date"/>
+            </div>
+
+            <div class="summary-line">
+                <span>Kiralama Günü:</span>
+                <strong id="rentalDays">0</strong>
+            </div>
+
+            <div class="summary-line">
+                <span>Günlük Ücret:</span>
+                <strong id="dailyRate">55 TL/gün</strong>
+            </div>
+
+            <div class="summary-line total">
+                <span>Toplam Tutar:</span>
+                <strong id="totalCost">0 TL</strong>
+            </div>
+            <div class="info-text">
+    * Teslim sırasında geçerli kimlik ve ehliyet gereklidir.<br/>
+    * İade edilebilir güvenlik depozitosu alınabilir.<br/>
+    * Geç iadelerde ek ücret uygulanabilir.<br/>
+    * Teslim saatinden 24 saat öncesine kadar ücretsiz iptal yapılabilir.
+</div>
+            <button class="rent-btn" id="rentNowBtn">Şimdi Kirala</button>
+        </div>
+
+    </div>
+
+    <div class="payment-card full-width">
+        <h3>Kiralamaya Hazır mısınız?</h3>
+
+        <div class="payment-row">
+            <span>☑ Insurance included</span>
+            <button>Dahil</button>
+        </div>
+
+        <div class="payment-row">
+            <span>☑ Ücretsiz cancellation</span>
+            <button>Ücretsiz</button>
+        </div>
+
+       <div class="payment-row">
+    <span>☑ No hidden fees</span>
+</div>
+    </div>
+
+</div>
+
+</section>
+
+<script type="text/javascript">
+//<![CDATA[
+const params = new URLSearchParams(window.location.search);
+    const car = params.get("car") || "Volkswagen Golf";
+
+    document.getElementById("carName").innerText = car;
+
+    const carData = {
+    "Volkswagen Golf": {
+        hero: "image/wolkswagen-golf-removebg-preview.png",
+        middle: "image/wolkswagen-golf.png",
+        road: "image/golf-3.jpg",
+        desc: "Volkswagen Golf dengeli performans, modern konfor ve yüksek yakıt verimliliği sunan kompakt bir hatchback araçtır. Şehir içi ve uzun yol kullanımı için uygundur.",
+        engine: "1.5 TSI Benzin",
+        gear: "Otomatik",
+        seats: "5 Koltuk",
+        fuel: "Benzin",
+        daily: 55,
+        monthly: 1450
+    },
+
+    "Mercedes EQA": {
+        hero: "image/eqa-3.png",
+        middle: "image/car.png",
+        road: "image/eqa-2.png",
+        desc: "Mercedes EQA sessiz sürüş, modern teknoloji ve yüksek konfor sunan premium elektrikli bir SUV modelidir. Çevre dostu ve lüks bir kiralama deneyimi isteyen müşteriler için idealdir.",
+        engine: "Elektrik Motor",
+        gear: "Otomatik",
+        seats: "5 Koltuk",
+        fuel: "Elektrik",
+        daily: 95,
+        monthly: 2600
+    },
+
+    "BMW 3": {
+        hero: "image/bmw-3-3.png",
+        middle: "image/bmw-3-series.png",
+        road: "image/bmw-2.png",
+        desc: "BMW 3 Series güçlü performansı, kaliteli iç mekanı ve başarılı yol tutuşuyla sportif bir sedan deneyimi sunar.",
+        engine: "2.0 Benzin",
+        gear: "Otomatik",
+        seats: "5 Koltuk",
+        fuel: "Benzin",
+        daily: 95,
+        monthly: 2550
+    },
+
+    "Audi A4": {
+        hero: "image/audi-a4-3.png",
+        middle: "image/audi-a4-3.png",
+        road: "image/audi-2.png",
+        desc: "Audi A4 konforlu iç mekanı, şık tasarımı ve akıcı sürüş performansıyla premium bir sedandır. İş ve günlük kullanım için uygundur.",
+        engine: "2.0 TFSI",
+        gear: "Otomatik",
+        seats: "5 Koltuk",
+        fuel: "Benzin",
+        daily: 110,
+        monthly: 2900
+    },
+
+    "Toyota Corolla": {
+        hero: "image/toyota-3.png",
+        middle: "image/toyota-2.png",
+        road: "image/toyota-4.png",
+        desc: "Toyota Corolla düşük yakıt tüketimi, konforlu oturma düzeni ve günlük kullanıma uygun yapısıyla güvenilir ve ekonomik bir sedandır.",
+        engine: "1.6 Hibrit",
+        gear: "Otomatik",
+        seats: "5 Koltuk",
+        fuel: "Hibrit",
+        daily: 70,
+        monthly: 1850
+    },
+
+    "Renault Clio": {
+        hero: "image/renault-3.png",
+        middle: "image/renault-3.png",
+        road: "image/reno-2.png",
+        desc: "Renault Clio kolay park edilebilen, düşük yakıt tüketimli ve pratik iç hacme sahip kompakt bir şehir aracıdır. Kısa şehir içi kiralamalar için iyi bir seçimdir.",
+        engine: "1.0 Benzin",
+        gear: "Manuel",
+        seats: "5 Koltuk",
+        fuel: "Benzin",
+        daily: 60,
+        monthly: 1600
+    }
+};
+
+    const selectedCar = carData[car] || carData["Volkswagen Golf"];
+
+    document.getElementById("heroCar").src = selectedCar.hero;
+    document.getElementById("smallCar").src = selectedCar.middle;
+    document.querySelector(".road-car").src = selectedCar.road;
+
+    document.getElementById("carDesc").innerText = selectedCar.desc;
+document.getElementById("engineInfo").innerText = selectedCar.engine;
+document.getElementById("gearInfo").innerText = selectedCar.gear;
+document.getElementById("seatInfo").innerText = selectedCar.seats;
+document.getElementById("fuelInfo").innerText = selectedCar.fuel;
+
+document.getElementById("dailyRate").innerText = selectedCar.daily + " TL/gün";
+
+document.getElementById("featureGear").innerText = selectedCar.gear;
+document.getElementById("featureFuel").innerText = selectedCar.fuel;
+document.getElementById("featureSeats").innerText = selectedCar.seats;
+
+const pickDate = document.getElementById("pickDate");
+const returnDate = document.getElementById("returnDate");
+const rentalDays = document.getElementById("rentalDays");
+const totalCost = document.getElementById("totalCost");
+
+function calculateByDate() {
+    if (!pickDate.value || !returnDate.value) {
+        rentalDays.innerText = "0";
+        totalCost.innerText = "0 TL";
+        return;
+    }
+
+    const start = new Date(pickDate.value);
+    const end = new Date(returnDate.value);
+
+    const diffTime = end - start;
+    const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (days <= 0) {
+        rentalDays.innerText = "Geçersiz";
+        totalCost.innerText = "0 TL";
+        return;
+    }
+
+    rentalDays.innerText = days;
+    totalCost.innerText = (days * selectedCar.daily) + " TL";
+}
+
+pickDate.addEventListener("change", calculateByDate);
+returnDate.addEventListener("change", calculateByDate);
+
+document.getElementById("rentNowBtn").addEventListener("click", function () {
+    if (!pickDate.value || !returnDate.value) {
+        alert("Lütfen teslim alma ve iade tarihlerini seçin.");
+        return;
+    }
+
+    const start = new Date(pickDate.value);
+    const end = new Date(returnDate.value);
+
+    const diffTime = end - start;
+    const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (days <= 0) {
+        alert("Lütfen geçerli bir kiralama süresi seçin.");
+        return;
+    }
+
+    window.location.href =
+        "rental.xhtml?car=" + encodeURIComponent(car) +
+        "&pick=" + encodeURIComponent(pickDate.value) +
+        "&return=" + encodeURIComponent(returnDate.value) +
+        "&days=" + encodeURIComponent(days);
+});
+    // 🔧 her araba için pozisyon
+const heroStyle = {
+    "Volkswagen Golf": { top: "-20px", scale: "1.05", right: "35px" },
+    "Mercedes EQA":   { top: "25px",  scale: "1.1",  right: "35px" },
+    "BMW 3":          { top: "10px",  scale: "1.08", right: "30px" },
+    "Audi A4":        { top: "40px",   scale: "1.15", right: "35px" },
+    "Toyota Corolla": { top: "0px",   scale: "1.50", right: "35px" },
+    "Renault Clio":   { top: "-10px",  scale: "1.06", right: "35px" }
+};
+
+// 🎯 hero araba
+const hero = document.getElementById("heroCar");
+
+// seçilen arabaya göre ayar
+const style = heroStyle[car] || { top: "0px", scale: "1", right: "35px" };
+
+// uygula
+hero.style.position = "absolute";
+hero.style.top = style.top;
+hero.style.right = style.right;
+hero.style.transform = "scale(" + style.scale + ")";
+hero.style.filter = "drop-shadow(0 12px 25px rgba(0,0,0,0.25))";
+//]]>
+</script>
+</body>
+</html>

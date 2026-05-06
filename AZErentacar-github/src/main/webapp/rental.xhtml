@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Kiralık Aracınızı Takip Edin</title>
+    <link rel="stylesheet" href="rental.css"/>
+</head>
+<body>
+
+<section class="rental-page">
+
+    <div class="rental-hero">
+        <h1>Kiralık Aracınızı Takip Edin</h1>
+        <div class="page-links">
+            <a href="cars.xhtml">Araçlara Dön</a>
+            <a href="cars.xhtml">Ana Sayfa</a>
+        </div>
+    </div>
+
+    <div class="rental-layout">
+
+        <div class="left-area">
+
+            <a class="map-box" href="https://www.google.com/maps" target="_blank">
+                <img class="map-img" src="image/map.jpeg" alt="Map"/>
+                <img id="mapCar" class="car-on-map" src="" alt="Seçilen Araç"/>
+
+            </a>
+
+            <div class="customer-card">
+                <div class="payment-card">
+    <h2>Ödeme Bilgileri</h2>
+
+    <div class="input-group">
+        <label>Ad Soyad</label>
+        <input id="cardName" type="text" value="#{loginBean.girisYapanKullanici.adSoyad}" placeholder="Ad Soyad"/>
+    </div>
+
+   <div class="input-group">
+    <label>Kart Numarası</label>
+    <input id="cardNumber" type="text" placeholder="1234 5678 9012 3456"/>
+    <small class="error" id="cardError"></small>
+</div>
+
+<div class="row">
+    <div class="input-group">
+        <label>Son Kullanma Tarihi</label>
+        <input id="expiryDate" type="text" placeholder="MM/YY"/>
+        <small class="error" id="dateError"></small>
+    </div>
+
+    <div class="input-group">
+        <label>CVV</label>
+        <input id="cvv" type="text" placeholder="123"/>
+        <small class="error" id="cvvError"></small>
+    </div>
+</div>
+
+    <button id="payBtn" class="pay-btn">Şimdi Öde</button>
+
+    <p class="payment-info">
+        * We accept Visa, MasterCard and American Express.<br/>
+        * Installment options may vary depending on your bank.<br/>
+        * Your payment is secured with 256-bit SSL encryption.
+    </p>
+</div>
+            </div>
+
+        </div>
+
+       <div class="right-area">
+
+    <div class="info-card">
+        <h2>Kullanıcı Bilgileri</h2>
+
+        <p><strong>Ad Soyad:</strong> <span id="userName">#{loginBean.girisYapanKullanici.adSoyad}</span></p>
+        <p><strong>Telefon:</strong> <span id="userPhone">#{loginBean.girisYapanKullanici.telefon}</span></p>
+        <p><strong>Email:</strong> <span id="userEmail">#{loginBean.girisYapanKullanici.email}</span></p>
+        <p><strong>Üyelik:</strong> Aktif Üye</p>
+    </div>
+
+    <div class="info-card">
+        <h2>Araç Bilgileri</h2>
+
+        <p><strong>Araç:</strong> <span id="carName">Volkswagen Golf</span></p>
+        <p><strong>Plaka:</strong> 34 ABC 123</p>
+        <p><strong>Teslim Alma:</strong> <span id="pickInfo">-</span></p>
+        <p><strong>İade:</strong> <span id="returnInfo">-</span></p>
+        <p><strong>Kiralama Günü:</strong> <span id="daysInfo">0</span></p>
+        <p><strong>Durum:</strong> <span class="green">Ödemeye Hazır</span></p>
+    </div>
+
+    <div class="info-card">
+        <h2>RentaCar Bilgileri</h2>
+
+        <p><strong>Şirket:</strong> RentaCar</p>
+        <p><strong>Destek:</strong> +90 555 123 45 67</p>
+        <p><strong>Email:</strong> support@rentacar.com</p>
+        <p><strong>Çalışma Saatleri:</strong> 09:00 - 22:00</p>
+        <p><strong>Ödeme:</strong> Güvenli Online Ödeme</p>
+    </div>
+
+</div>
+    </div>
+
+
+</section>
+
+<script type="text/javascript">
+//<![CDATA[
+const params = new URLSearchParams(window.location.search);
+
+    const car = params.get("car") || "Volkswagen Golf";
+    const pick = params.get("pick") || "-";
+    const returnDate = params.get("return") || "-";
+    const days = params.get("days") || "0";
+
+    const carImages = {
+        "Volkswagen Golf": "image/wolkswagen-golf-removebg-preview.png",
+        "Mercedes EQA": "image/eqa-3.png",
+        "BMW 3": "image/bmw-3-3.png",
+        "Audi A4": "image/audi-a4-3.png",
+        "Toyota Corolla": "image/toyota-3.png",
+        "Renault Clio": "image/renault-3.png"
+    };
+
+    document.getElementById("carName").innerText = car;
+    document.getElementById("pickInfo").innerText = pick;
+    document.getElementById("returnInfo").innerText = returnDate;
+    document.getElementById("daysInfo").innerText = days;
+    document.getElementById("mapCar").src = carImages[car] || carImages["Volkswagen Golf"];
+const cardInput = document.getElementById("cardNumber");
+const expiryInput = document.getElementById("expiryDate");
+const cvvInput = document.getElementById("cvv");
+
+const cardError = document.getElementById("cardError");
+const dateError = document.getElementById("dateError");
+const cvvError = document.getElementById("cvvError");
+
+// 🔹 CARD NUMBER
+cardInput.addEventListener("input", function () {
+    let value = cardInput.value.replace(/\D/g, ""); // sadece sayı
+
+    // otomatik boşluk ekle
+    value = value.replace(/(.{4})/g, "$1 ").trim();
+    cardInput.value = value;
+
+    const numbersOnly = value.replace(/\s/g, "");
+
+    if (numbersOnly.length < 16) {
+        cardError.innerText = "Kart numarası 16 haneli olmalıdır";
+        cardInput.classList.add("error-input");
+    } else {
+        cardError.innerText = "";
+        cardInput.classList.remove("error-input");
+    }
+});
+
+// 🔹 EXPIRY DATE
+expiryInput.addEventListener("input", function () {
+    let value = expiryInput.value.replace(/\D/g, "");
+
+    if (value.length >= 3) {
+        value = value.slice(0,2) + "/" + value.slice(2,4);
+    }
+
+    expiryInput.value = value;
+
+    if (!/^(0[1-9]|1[0-2])\/[0-9]{2}$/.test(value)) {
+        dateError.innerText = "Format AA/YY olmalıdır";
+        expiryInput.classList.add("error-input");
+    } else {
+        dateError.innerText = "";
+        expiryInput.classList.remove("error-input");
+    }
+});
+
+// 🔹 CVV
+cvvInput.addEventListener("input", function () {
+    let value = cvvInput.value.replace(/\D/g, "");
+    cvvInput.value = value;
+
+    if (value.length !== 3) {
+        cvvError.innerText = "CVV 3 haneli olmalıdır";
+        cvvInput.classList.add("error-input");
+    } else {
+        cvvError.innerText = "";
+        cvvInput.classList.remove("error-input");
+    }
+});
+
+document.getElementById("payBtn").addEventListener("click", async function () {
+    const cardName = document.getElementById("cardName").value.trim();
+    const cardNumber = cardInput.value.replace(/\s/g, "");
+    const expiry = expiryInput.value.trim();
+    const cvv = cvvInput.value.trim();
+
+    if (cardName === "") {
+        alert("Lütfen kart sahibinin adını girin.");
+        return;
+    }
+
+    if (cardNumber.length !== 16) {
+        alert("Kart numarası 16 haneli olmalıdır.");
+        return;
+    }
+
+    if (!/^(0[1-9]|1[0-2])\/[0-9]{2}$/.test(expiry)) {
+        alert("Son kullanma tarihi AA/YY formatında olmalıdır.");
+        return;
+    }
+
+    if (cvv.length !== 3) {
+        alert("CVV 3 haneli olmalıdır.");
+        return;
+    }
+
+    try {
+        const response = await fetch("completeRental", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "car=" + encodeURIComponent(car) +
+                "&pick=" + encodeURIComponent(pick) +
+                "&return=" + encodeURIComponent(returnDate)
+        });
+
+        if (!response.ok) {
+            alert("Ödeme alındı ancak araç durumu güncellenemedi.");
+            return;
+        }
+    } catch (error) {
+        alert("Araç durumu güncellenemedi.");
+        return;
+    }
+
+   window.location.href =
+    "success.xhtml?car=" + encodeURIComponent(car) +
+    "&pick=" + encodeURIComponent(pick) +
+    "&return=" + encodeURIComponent(returnDate) +
+    "&days=" + encodeURIComponent(days);
+});
+//]]>
+</script>
+
+</body>
+</html>
