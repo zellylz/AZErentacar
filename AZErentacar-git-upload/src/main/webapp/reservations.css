@@ -1,0 +1,287 @@
+.page-section {
+    display: none;
+}
+
+.page-section.active-page {
+    display: block;
+}
+
+.reservations-page {
+    animation: fadeUp 0.5s ease forwards;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+}
+
+.page-header h1 {
+    margin-bottom: 6px;
+}
+
+.page-header p {
+    color: #777;
+    font-size: 15px;
+}
+
+.add-reservation-btn {
+    border: none;
+    background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+    color: white;
+    padding: 13px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 210, 255, 0.3);
+}
+
+.add-reservation-btn i {
+    margin-right: 8px;
+}
+
+.reservation-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.reservation-stat-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    transition: 0.25s ease;
+}
+
+.reservation-stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 21px;
+}
+
+.blue-bg {
+    background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+}
+
+.green-bg {
+    background: linear-gradient(135deg, #16a085, #2ecc71);
+}
+
+.orange-bg {
+    background: linear-gradient(135deg, #f39c12, #f1c40f);
+}
+
+.reservation-stat-card p {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.reservation-stat-card h2 {
+    font-size: 28px;
+    color: #222;
+}
+
+.reservation-content-grid {
+    display: grid;
+    grid-template-columns: 1.7fr 0.9fr;
+    gap: 20px;
+}
+
+.reservation-table-panel,
+.reservation-detail-card {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.panel-top {
+    padding: 18px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-top h3 {
+    font-size: 18px;
+    color: #222;
+}
+
+.reservation-search {
+    width: 240px;
+    height: 40px;
+    background: #f5f7fb;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 14px;
+}
+
+.reservation-search i {
+    color: #888;
+}
+
+.reservation-search input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+}
+
+.reservation-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.reservation-table th {
+    text-align: left;
+    font-size: 13px;
+    color: #777;
+    padding: 16px 18px;
+    background: #fafafa;
+}
+
+.reservation-table td {
+    padding: 16px 18px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.customer-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.table-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #eaf3ff;
+    color: #2f83d4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.customer-cell small {
+    display: block;
+    color: #777;
+    margin-top: 3px;
+}
+
+.status {
+    padding: 7px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status.confirmed {
+    background: #e7f8ef;
+    color: #14935c;
+}
+
+.status.pending {
+    background: #fff4dd;
+    color: #d98900;
+}
+
+.status.cancelled {
+    background: #fff4dd;
+    color: #d98900;
+}
+
+.reservation-detail-card {
+    padding: 20px;
+}
+
+.reservation-detail-card h3 {
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+.highlight-car {
+    height: 170px;
+    background: #f4f6f8;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.highlight-car img {
+    width: 90%;
+    height: 130px;
+    object-fit: contain;
+}
+
+.reservation-detail-card h2 {
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+.reservation-detail-card p {
+    color: #666;
+    margin-bottom: 18px;
+}
+
+.detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detail-list div {
+    display: flex;
+    justify-content: space-between;
+    background: #f7f9fc;
+    padding: 13px;
+    border-radius: 12px;
+}
+
+.detail-list span {
+    color: #777;
+    font-size: 13px;
+}
+
+.detail-list strong {
+    color: #222;
+    font-size: 14px;
+}
+
+.paid-text {
+    color: #14935c !important;
+}
+
+.view-reservation-btn {
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+    padding: 13px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(90deg, #0f1f33, #1e3c5c);
+}

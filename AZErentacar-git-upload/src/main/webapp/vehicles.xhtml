@@ -1,0 +1,162 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Araç Yönetimi</title>
+    <link rel="stylesheet" href="style.css?v=3"/>
+    <link rel="stylesheet" href="reservations.css?v=3"/>
+    <link rel="stylesheet" href="vehicles.css?v=7"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+</head>
+<body>
+<div class="dashboard-container">
+    <div class="sidebar">
+        <div class="logo">
+            <img src="image/logo.png" class="logo-img" alt="RentaCar Logo"/>
+            <span>RentaCar</span>
+        </div>
+
+        <div class="menu">
+            <a href="admin.xhtml"><i class="fa-solid fa-gauge-high"></i>Panel</a>
+            <a href="admin.xhtml"><i class ="fa-regular fa-calendar-check"></i>Rezervasyonlar</a>
+            <a class="active" href="vehicles.xhtml"><i class="fa-solid fa-car-side"></i>Araçlar </a>
+            <a href="admin.xhtml"><i class="fa-solid fa-users"></i>Müşteriler</a>
+            <a href="admin.xhtml"><i class="fa-solid fa-chart-column"></i>Raporlar</a>
+            <a href="cars.xhtml"><i class="fa-solid fa-house"></i>Siteye Dön</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div id="vehiclesSection" class="vehicles-page vehicles-visible-section">
+            <div class="vehicles-hero">
+                <div>
+                    <h1>Araç Yönetimi</h1>
+                    <p>Müsait araçları, fiyatları, durumları ve kiralama koşullarını yönetin.</p>
+                </div>
+
+                <button class="add-reservation-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    Araç Ekle
+                </button>
+
+                <div class="vehicle-filters">
+                    <select>
+                        <option>Tüm Konumlar</option>
+                        <option>İstanbul</option>
+                        <option>Ankara</option>
+                        <option>Malatya</option>
+                    </select>
+
+                    <select>
+                        <option>Tüm Araç Tipleri</option>
+                        <option>Sedan</option>
+                        <option>SUV</option>
+                        <option>Hatchback</option>
+                    </select>
+
+                    <select>
+                        <option>Durum</option>
+                        <option>Müsait</option>
+                        <option>Kirada</option>
+                        <option>Bakımda</option>
+                    </select>
+
+                    <input type="text" placeholder="Araç ara..."/>
+                </div>
+            </div>
+
+            <div class="admin-car-list">
+                <div class="admin-car-card">
+                    <img class="car-thumb" src="image/golf2.jpg" alt="Volkswagen Golf"/>
+
+                    <div class="admin-car-info">
+                        <h3>Volkswagen Golf</h3>
+                        <p>Otomatik, 4 Koltuk</p>
+                        <small>Plaka: 34 AZE 104</small>
+                    </div>
+
+                    <div class="admin-car-price">
+                        <strong>$50/gün</strong>
+                        <span class="vehicle-status available">Müsait</span>
+                    </div>
+
+                    <img class="car-big-img" src="image/wolkswagen-golf.png" alt="Volkswagen Golf"/>
+
+                    <div class="vehicle-actions">
+                        <button class="edit-btn">Düzenle</button>
+                        <button class="details-btn">Detaylar</button>
+                    </div>
+                </div>
+
+                <div class="admin-car-card">
+                    <img class="car-thumb" src="image/bmw-2.png" alt="BMW 3 Series"/>
+
+                    <div class="admin-car-info">
+                        <h3>BMW 3 Series</h3>
+                        <p>Otomatik, 5 Koltuk</p>
+                        <small>Plaka: 44 BMW 330</small>
+                    </div>
+
+                    <div class="admin-car-price">
+                        <strong>$85/gün</strong>
+                        <span class="vehicle-status rented">Kirada</span>
+                    </div>
+
+                    <img class="car-big-img" src="image/bmw-3-series.png" alt="BMW 3 Series"/>
+
+                    <div class="vehicle-actions">
+                        <button class="edit-btn">Düzenle</button>
+                        <button class="details-btn">Detaylar</button>
+                    </div>
+                </div>
+
+                <div class="admin-car-card">
+                    <img class="car-thumb" src="image/audi-2.png" alt="Audi A4"/>
+
+                    <div class="admin-car-info">
+                        <h3>Audi A4</h3>
+                        <p>Otomatik, 5 Koltuk</p>
+                        <small>Plaka: 06 AUD 404</small>
+                    </div>
+
+                    <div class="admin-car-price">
+                        <strong>$70/gün</strong>
+                        <span class="vehicle-status available">Müsait</span>
+                    </div>
+
+                    <img class="car-big-img" src="image/audi-a4.png" alt="Audi A4"/>
+
+                    <div class="vehicle-actions">
+                        <button class="edit-btn">Düzenle</button>
+                        <button class="details-btn">Detaylar</button>
+                    </div>
+                </div>
+
+                <div class="admin-car-card">
+                    <img class="car-thumb" src="image/eqa-2.png" alt="Mercedes EQA"/>
+
+                    <div class="admin-car-info">
+                        <h3>Mercedes EQA</h3>
+                        <p>Elektrik, 5 Koltuk</p>
+                        <small>Plaka: 34 EQA 700</small>
+                    </div>
+
+                    <div class="admin-car-price">
+                        <strong>$95/gün</strong>
+                        <span class="vehicle-status maintenance">Bakımda</span>
+                    </div>
+
+                    <img class="car-big-img" src="image/car.png" alt="Mercedes EQA"/>
+
+                    <div class="vehicle-actions">
+                        <button class="edit-btn">Düzenle</button>
+                        <button class="details-btn">Detaylar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

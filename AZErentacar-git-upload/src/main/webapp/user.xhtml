@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:pt="jakarta.faces.passthrough"
+      lang="tr" xml:lang="tr">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Aze Rentacar</title>
+    <link rel="stylesheet" href="user.css"/>
+</head>
+<body>
+
+<!-- GİRİŞ SAYFASI -->
+<section id="loginPage" class="login-page">
+
+    <div class="login-top">
+       <div class="logo">
+    <img src="image/logo.png"/>
+    <div>
+        <strong>AZE RENTACAR</strong>
+        <small>Kurumsal Araç Kiralama</small>
+    </div>
+</div>
+
+        <nav>
+    <a href="user.xhtml#loginPage">Ana Sayfa</a>
+<a href="cars.xhtml">Araçlarımız</a>
+<a href="user.xhtml#aboutSection">Hakkımızda</a>
+<a href="user.xhtml#contactSection">İletişim</a>
+<a href="admin.xhtml">Yönetim</a>
+</nav>
+
+        <button onclick="openRegisterBox()">Kayıt Ol</button>
+    </div>
+
+    <div class="login-hero">
+        <div class="hero-text">
+            <span class="tag">Premium Araç Filosu</span>
+            <h1>Hayalinizdeki Aracı<br/>Keşfetmeye Başlayın</h1>
+           <p>Konforlu, güvenli ve modern araçlarla yolculuğa hazır olun.</p>
+
+            <div class="hero-buttons">
+                <button onclick="scrollToLogin()">Giriş Yap</button>
+<button class="light-btn" onclick="guestLogin()">Misafir Olarak Devam Et</button>
+            </div>
+        </div>
+
+        <div class="login-box" id="loginBox">
+            <h2>Giriş Yap</h2>
+
+            <h:form>
+                <h:inputText id="email" value="#{loginBean.email}" pt:type="email" pt:placeholder="E-mail"/>
+                <h:inputSecret id="password" value="#{loginBean.sifre}" pt:placeholder="Şifre"/>
+
+                <h:commandButton value="Giriş Yap" action="#{loginBean.girisYap}"/>
+                <h:outputText value="#{loginBean.hataMesaji}" styleClass="error-message"
+                              rendered="#{not empty loginBean.hataMesaji}"/>
+            </h:form>
+<button class="guest" onclick="guestLogin()">Misafir Olarak Devam Et</button>
+        </div>
+
+        <div class="login-box hidden" id="registerBox">
+           <h2>Kayıt Ol</h2>
+
+            <h:form>
+                <h:inputText value="#{kullaniciBean.adSoyad}" pt:placeholder="Ad Soyad"/>
+                <h:inputText value="#{kullaniciBean.email}" pt:type="email" pt:placeholder="E-mail"/>
+                <h:inputSecret value="#{kullaniciBean.sifre}" pt:placeholder="Şifre"/>
+
+                <h:commandButton value="Hesap Oluştur" action="#{kullaniciBean.kullaniciEkle}"/>
+                <h:outputText value="#{kullaniciBean.hataMesaji}" styleClass="error-message"
+                              rendered="#{not empty kullaniciBean.hataMesaji}"/>
+            </h:form>
+<button class="guest" onclick="openLoginBox()">Zaten hesabınız var mı?</button>
+        </div>
+    </div>
+
+</section>
+<section id="popularCars" class="popular-section">
+   <h2>Popüler Araçlar</h2>
+<p>En çok tercih edilen kiralık araçlarımız</p>
+
+    <div class="popular-grid">
+        <div class="popular-card">
+            <img src="image/bmw-3-series.png"/>
+            <h3>BMW 3 Series</h3>
+            <p>Konforlu ve premium sürüş deneyimi.</p>
+           <button onclick="goCarsPage()">Daha Fazla Gör</button>
+        </div>
+
+        <div class="popular-card">
+            <img src="image/audi-a4.png"/>
+            <h3>Audi A4</h3>
+           <p>Şehir içi ve uzun yol sürüşleri için ideal seçim.</p>
+            <button onclick="goCarsPage()">Daha Fazla Gör</button>
+        </div>
+
+        <div class="popular-card">
+            <img src="image/toyota-2.png"/>
+            <h3>Toyota Corolla</h3>
+            <p>Ekonomik, güvenilir ve pratik.</p>
+           <button onclick="goCarsPage()">Daha Fazla Gör</button>
+        </div>
+    </div>
+</section>
+
+<section id="aboutSection" class="about-section">
+    <h2>Hakkımızda</h2>
+    <p>
+       RentaCar, kullanıcıların güvenilir, konforlu ve uygun fiyatlı araçlara kolayca ulaşmasını sağlayan modern bir araç kiralama platformudur. Amacımız hızlı rezervasyon, güncel araç bilgisi ve kaliteli hizmet deneyimi sunmaktır.
+    </p>
+
+    <div class="about-boxes">
+        <div>
+            <h3>Güvenilir Hizmet</h3>
+            <p>Düzenli bakımı yapılan araçlarla güvenli yolculuk.</p>
+</div>
+
+<div>
+    <h3>Geniş Araç Filosu</h3>
+    <p>Ekonomi, lüks ve aile tipi araçlardan oluşan seçenekler.</p>
+</div>
+
+<div>
+    <h3>Üyelere Özel</h3>
+    <p>Harita erişimi, yorum ve puanlama gibi özel özellikler.</p>
+</div>
+    </div>
+</section>
+
+<section id="contactSection" class="contact-section">
+    <h2>İletişim</h2>
+<p>Bizimle iletişime geçmek için aşağıdaki bilgileri kullanabilirsiniz.</p>
+
+    <div class="contact-box">
+        <p><strong>Telefon:</strong> 0555 555 55 55</p>
+        <p><strong>E-mail:</strong> info@rentacar.com</p>
+        <p><strong>Adres:</strong> İstanbul / Türkiye</p>
+    </div>
+</section>
+
+<script type="text/javascript" src="user.js?v=2"></script>
+</body>
+</html>
